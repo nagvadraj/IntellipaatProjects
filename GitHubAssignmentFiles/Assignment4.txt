@@ -1,7 +1,7 @@
-# Step 1: Put master.txt on master branch, stage, and commit
-echo "This is master.txt" > master.txt
-git add master.txt
-git commit -m "Add master.txt to master branch"
+# Step 1: Put main.txt on main branch, stage, and commit
+echo "This is main.txt" > main.txt
+git add main.txt
+git commit -m "Add main.txt to main branch"
 
 # Step 2: Create 3 branches: public1, public2, and private
 git checkout -b public1
@@ -13,30 +13,30 @@ echo "This is public1.txt" > public1.txt
 git add public1.txt
 git commit -m "Add public1.txt to public1 branch"
 
-# Step 4: Merge public1 on master branch
-git checkout master
+# Step 4: Merge public1 on main branch
+git checkout main
 git merge public1
 
-# Step 5: Merge public2 on master branch
+# Step 5: Merge public2 on main branch
 git merge public2
 
-# Step 6: Edit master.txt on private branch, stage, and commit
+# Step 6: Edit main.txt on private branch, stage, and commit
 git checkout private
-echo "This is an edited master.txt in the private branch" > master.txt
-git add master.txt
-git commit -m "Edit master.txt on private branch"
+echo "This is an edited main.txt in the private branch" > main.txt
+git add main.txt
+git commit -m "Edit main.txt on private branch"
 
-# Step 7: Update branch public1 and public2 with new master code in private
+# Step 7: Update branch public1 and public2 with new main code in private
 git checkout public1
 git merge private
 git checkout public2
 git merge private
 
-# Step 8: Update new master code on master
-git checkout master
+# Step 8: Update new main code on main
+git checkout main
 git merge private
 
 # Step 9: Update all the code on the private branch
 git checkout private
-git merge master
+git merge main
 
