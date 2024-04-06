@@ -4,9 +4,7 @@ pipeline {
     stages {
         stage('Pull Git Content') {
             steps {
-                script {
-                    git url: 'https://github.com/nagvadraj/IntellipaatProjects.git', branch: 'test'
-                }
+                git url: 'https://github.com/nagvadraj/IntellipaatProjects.git', branch: 'test'
             }
         }
     }
