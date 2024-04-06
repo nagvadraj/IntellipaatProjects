@@ -37,4 +37,4 @@ git push origin develop F1 F2 main
 git branch -D F2
 
 # Step 6: Delete the same branch on GitHub as well
-git push origin --delete f2
+git push origin --delete F2
