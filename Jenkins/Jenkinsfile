@@ -5,8 +5,7 @@ pipeline {
         stage('Pull Git Content') {
             steps {
                 script {
-                    if (!fileExists('develop')) {
-                        mkdir('develop')
+                    sh 'mkdir -p develop'
                     }
                 }                
                 dir('createdbyJenkinsPipeline') {
