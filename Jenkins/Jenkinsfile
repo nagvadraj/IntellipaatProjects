@@ -5,6 +5,7 @@ pipeline {
         stage('Pull Git Content') {
             steps {
                 script {
+                    sh "git checkout -f 'develop'"
                     sh 'develop'
                 }
                 
