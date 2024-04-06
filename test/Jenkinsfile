@@ -1,0 +1,18 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('Pull Git Content') {
+            steps {
+                script {
+                    // Checkout the develop branch
+                    sh echo "hello world"
+                }
+                
+                {
+                    git url: 'https://github.com/nagvadraj/IntellipaatProjects.git', branch: 'test'
+                }
+            }
+        }
+    }
+}
