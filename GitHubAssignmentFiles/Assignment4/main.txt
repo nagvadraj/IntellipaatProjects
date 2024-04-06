@@ -1,1 +1,1 @@
-This is main.txt
+This is an edited main.txt in the private branch
