@@ -1,0 +1,14 @@
+---
+- name: Install Apache2 and NGINX
+  hosts: all
+  become: yes
+  tasks:
+    - name: Install Apache2 on ansibletm1
+      include_role:
+        name: apache2
+      when: inventory_hostname == 'ansibletm1'
+
+    - name: Install NGINX on ansibletm2
+      include_role:
+        name: nginx
+      when: inventory_hostname == 'ansibletm2'

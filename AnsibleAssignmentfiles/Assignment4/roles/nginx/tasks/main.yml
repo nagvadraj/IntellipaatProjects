@@ -1,0 +1,12 @@
+---
+- name: Install NGINX
+  apt:
+    name: nginx
+    state: present
+
+- name: Copy custom index.html to NGINX web root
+  ansible.builtin.copy:
+    src: index.html
+    dest: /usr/share/nginx/html/index.html
+  become: yes
+  when: inventory_hostname == 'ansibletm2'

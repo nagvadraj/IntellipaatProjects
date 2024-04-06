@@ -1,0 +1,13 @@
+---
+- name: Add text to /tmp/1.txt using custom script
+  hosts: all
+  become: yes
+  tasks:
+    - name: Copy the script to the remote host
+      copy:
+        src: add_text.sh
+        dest: /tmp/add_text.sh
+        mode: '0755'  
+
+    - name: Run the script on the remote host
+      shell: /tmp/add_text.sh

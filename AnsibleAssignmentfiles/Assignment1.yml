@@ -1,0 +1,31 @@
+---
+- name: Install Java and MySQL
+  hosts: all
+  become: yes
+  vars:
+    java_packages:
+      - openjdk-11-jdk  
+    mysql_packages:
+      - mysql-server
+
+  tasks:
+    - name: Update package cache
+      apt:
+        update_cache: yes
+      when: ansible_os_family == 'Debian'
+
+    - name: Install Java
+      package:
+        name: "{{ java_packages }}"
+      when: inventory_hostname == 'ansibletm1'
+
+    - name: Install MySQL Server
+      package:
+        name: "{{ mysql_packages }}"
+      when: inventory_hostname == 'ansibletm2'
+
+    - name: Start MySQL Service
+      service:
+        name: mysql
+        state: started
+      when: inventory_hostname == 'ansibletm2'

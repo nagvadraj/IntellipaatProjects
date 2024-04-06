@@ -1,0 +1,16 @@
+---
+- name: Deploy Ansible cluster
+  hosts: all
+  become: yes
+  tasks:
+    # Install Java on test nodes
+    - name: Install Java on test nodes
+      include_role:
+        name: java
+      when: "'test' in group_names"
+
+    # Install MySQL server on prod nodes
+    - name: Install MySQL server on prod nodes
+      include_role:
+        name: mysql
+      when: "'prod' in group_names"
