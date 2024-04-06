@@ -1,0 +1,3 @@
+docker commit <containerid> my-apache-image
+docker exec -it <containerid> bash
+service apache2 start

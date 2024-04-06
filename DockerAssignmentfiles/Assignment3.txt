@@ -1,0 +1,10 @@
+docker tag my-apache-image nagvadraj/my-apache-image:latest
+docker login
+docker push nagvadraj/my-apache-image:latest
+
+## on another node
+
+docker pull nagvadraj/my-apache-image:latest
+docker run -it -d -p 86:80 nagvadraj/my-apache-image:latest
+docker exec -it af5 bash
+service apache2 start

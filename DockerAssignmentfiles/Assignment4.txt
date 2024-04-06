@@ -1,0 +1,13 @@
+## Dockerfile
+
+FROM ubuntu:latest
+RUN apt-get update && apt-get install -y apache2
+CMD ["apache2ctl", "-D", "FOREGROUND"]
+
+## build file
+
+docker build -t my-apache-image .
+
+## run container
+
+docker run -it -d -p 80:80 my-apache-image

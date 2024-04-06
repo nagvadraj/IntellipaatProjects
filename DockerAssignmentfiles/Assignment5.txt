@@ -1,0 +1,26 @@
+cat > index.html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to My Website</title>
+</head>
+<body>
+    <h1>Hello, World!</h1>
+    <p>This is a sample HTML file.</p>
+</body>
+</html>
+
+
+## Dockerfile
+
+FROM ubuntu:latest
+RUN apt-get update && apt-get install -y apache2
+COPY index.html /var/www/html/
+CMD ["apache2ctl", "-D", "FOREGROUND"]
+
+## build file
+
+docker build -t my-html-image .
+
+## run container
+docker run -it -d -p 80:80 my-html-image

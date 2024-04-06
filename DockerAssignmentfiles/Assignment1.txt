@@ -1,0 +1,6 @@
+docker pull ubuntu
+docker run -it -d -p 80:80 --name my-apache-container ubuntu
+docker exec -it my-apache-container bash
+apt update
+apt install apache2
+
