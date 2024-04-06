@@ -1,32 +1,102 @@
-# Step 1: Initialize Git Flow
-git flow init -d
 
-# Step 2: Create all the required branches (master, develop, feature/feature_branch, hotfix/hotfix_branch)
-# No need to create branches manually, git-flow will create them on demand.
 
-# Step 3: Starting from the feature branch, push the branch to the master
-# Create a new feature branch
-git flow feature start my_feature
+1. Create Required Branches
 
-# Work on your feature branch, make changes, stage, and commit them
+# Initialize a new Git repository
+git init
 
-# When the feature is complete, merge it into the develop branch
-git flow feature finish my_feature
+# Create the main branches
+git checkout -b develop
+git checkout -b main
 
-# Merge develop into master
-git checkout master
-git merge develop
 
-# Step 4: Push a urgent.txt on master using hotfix
-# Create a hotfix branch
-git flow hotfix start urgent_fix
+# Create feature, release, and hotfix branch prefixes
+git checkout -b feature/branch-name
+git checkout -b release/version-number
+git checkout -b hotfix/issue-number
 
-# Make the necessary changes in the hotfix branch, stage, and commit them
 
-# Finish the hotfix, merging it into both master and develop
-git flow hotfix finish urgent_fix
+2. Set Up Git Flow
 
-# Push branches and tags to the remote repository
-git push origin --all
-git push origin --tags
+# Initialize Git Flow in the repository
+git flow init
 
+3. Work on a Feature Branch
+Create and switch to a new feature branch to work on a specific feature:
+
+
+git checkout -b feature/new-feature develop
+# Work on your feature, make commits
+git add .
+git commit -m "Implement new feature"
+
+4. Merge Feature to Develop
+Once the feature is completed, merge it back into the develop branch:
+
+
+git checkout develop
+git merge --no-ff feature/new-feature
+git branch -d feature/new-feature
+
+5. Prepare Release
+When it's time to make a release, create a release branch from develop:
+
+
+git checkout -b release/1.0 develop
+# Perform any necessary release preparations (e.g., version bump, testing)
+# Commit changes
+git add .
+git commit -m "Prepare for release 1.0"
+
+6. Finish Release
+Merge the release branch into both main and develop:
+
+
+git checkout main
+git merge --no-ff release/1.0
+git tag 1.0
+
+git checkout develop
+git merge --no-ff release/1.0
+
+git branch -d release/1.0
+
+7. Create Hotfix
+If an urgent issue arises on the main branch, create a hotfix branch:
+
+
+git checkout -b hotfix/urgent-fix main
+# Make necessary changes
+# Commit changes
+git add .
+git commit -m "Fix urgent issue"
+
+8. Finish Hotfix
+Merge the hotfix into both main and develop:
+
+
+git checkout main
+git merge --no-ff hotfix/urgent-fix
+git tag 1.0.1
+
+git checkout develop
+git merge --no-ff hotfix/urgent-fix
+
+git branch -d hotfix/urgent-fix
+
+#Pushing Changes
+git push origin branch-name
+
+git push origin main
+
+
+# Adding urgent.txt using Hotfix
+
+
+git checkout hotfix/urgent-fix
+echo "This is urgent!" > urgent.txt
+git add urgent.txt
+git commit -m "Add urgent.txt"
+git checkout main
+git merge --no-ff hotfix/urgent-fix
+git push origin main
