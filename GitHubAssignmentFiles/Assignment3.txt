@@ -31,10 +31,10 @@ git add f2.txt
 git commit -m "Add f2.txt to f2 branch"
 
 # Step 4: Push all these branches to GitHub
-git push origin develop F1 f2 master
+git push origin develop F1 F2 main
 
 # Step 5: On local delete f2 branch
-git branch -d f2
+git branch -D F2
 
 # Step 6: Delete the same branch on GitHub as well
 git push origin --delete f2
