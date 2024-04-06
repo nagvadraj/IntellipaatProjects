@@ -11,7 +11,7 @@ pipeline {
                 
                 // Change the current directory to 'createdbyJenkinsPipeline' and pull Git content
                 dir('createdbyJenkinsPipeline') {
-                    git url: 'https://github.com/nagvadraj/IntellipaatProjects.git', branch: 'develop'
+                    git url: 'https://github.com/nagvadraj/IntellipaatProjects.git', branch: 'main'
                 }
             }
         }
