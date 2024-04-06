@@ -5,10 +5,11 @@ pipeline {
         stage('Pull Git Content') {
             steps {
                 script {
+                    // Checkout the develop branch
                     sh 'git checkout -f develop'
-                    sh 'develop'
                 }
                 
+                // Now that we're on the develop branch, pull Git content into a specific folder
                 dir('createdbyJenkinsPipeline') {
                     git url: 'https://github.com/nagvadraj/IntellipaatProjects.git', branch: 'main'
                 }
