@@ -1,16 +1,40 @@
-# Step a: Create a new folder
-mkdir my_folder
-cd my_folder
+# Step 1: Create a Git working directory with the specified branches
+mkdir my_project
+cd my_project
+git init
 
-# Step b: Put the following files in the folder
-touch Code.txt Log.txt Output.txt
+# Create branches
+git checkout -b develop
+git checkout -b F1
+git checkout -b f2
 
-# Step c: Stage the Code.txt and Output.txt files
-git add Code.txt Output.txt
+# Step 2: In the master branch, commit main.txt file
+git checkout master
+echo "This is main.txt" > main.txt
+git add main.txt
+git commit -m "Add main.txt to master branch"
 
-# Step d: Commit them
-git commit -m "Add Code.txt and Output.txt"
+# Step 3: Put develop.txt in develop branch, f1.txt and f2.txt in F1 and f2 respectively
+git checkout develop
+echo "This is develop.txt" > develop.txt
+git add develop.txt
+git commit -m "Add develop.txt to develop branch"
 
-# Step e: Push them to GitHub
-git push origin main
+git checkout F1
+echo "This is f1.txt" > f1.txt
+git add f1.txt
+git commit -m "Add f1.txt to F1 branch"
 
+git checkout f2
+echo "This is f2.txt" > f2.txt
+git add f2.txt
+git commit -m "Add f2.txt to f2 branch"
+
+# Step 4: Push all these branches to GitHub
+git push origin develop F1 f2 master
+
+# Step 5: On local delete f2 branch
+git branch -d f2
+
+# Step 6: Delete the same branch on GitHub as well
+git push origin --delete f2
