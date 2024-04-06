@@ -4,7 +4,16 @@ pipeline {
     stages {
         stage('Pull Git Content') {
             steps {
-
+                 script {
+                     if (!fileExists('your-folder-name')) {
+                                        mkdir('your-folder-name')
+                                    }
+                                }
+                                
+                                // Checkout code from Git into the created folder
+                                dir('your-folder-name') {
+                                    git credentialsId: 'your-git-credentials-id', url: 'https://github.com/your/repo.git', branch: 'develop'
+                }
                 git url: 'https://github.com/nagvadraj/IntellipaatProjects.git', branch: 'develop'
             }
         }
