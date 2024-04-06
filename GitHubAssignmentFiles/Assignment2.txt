@@ -1,16 +1,36 @@
-# Step a: Create a new folder
-mkdir my_folder
-cd my_folder
+# Step 1: Create a Git working directory with feature1.txt and feature2.txt in the master branch
+mkdir my_project
+cd my_project
+git init
 
-# Step b: Put the following files in the folder
-touch Code.txt Log.txt Output.txt
+# Create feature1.txt and feature2.txt
+touch feature1.txt feature2.txt
 
-# Step c: Stage the Code.txt and Output.txt files
-git add Code.txt Output.txt
+# Add and commit them
+git add .
+git commit -m "Add feature1.txt and feature2.txt to master branch"
 
-# Step d: Commit them
-git commit -m "Add Code.txt and Output.txt"
+# Step 2: Create 3 branches develop, feature1, and feature2
+git checkout -b develop
+git checkout -b feature1
+git checkout -b feature2
 
-# Step e: Push them to GitHub
-git push origin main
+# Step 3: In develop branch create develop.txt, do not stage or commit it
+touch develop.txt
 
+# Step 4: Stash this file and check out to feature1 branch
+git stash
+
+# Switch to the feature1 branch
+git checkout feature1
+
+# Step 5: Create new.txt file in feature1 branch, stage, and commit this file
+touch new.txt
+git add new.txt
+git commit -m "Add new.txt to feature1 branch"
+
+# Step 6: Checkout to develop, unstash this file, and commit
+git checkout develop
+git stash pop
+git add develop.txt
+git commit -m "Add develop.txt to develop branch"
