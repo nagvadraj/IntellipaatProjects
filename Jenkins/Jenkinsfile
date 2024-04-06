@@ -5,9 +5,11 @@ pipeline {
         stage('Pull Git Content') {
             steps {
                 script {
-                    sh 'mkdir -p develop'
-                    }
-                }                
+                    // Check if 'your-folder-name' exists, if not, create it
+                    sh 'develop'
+                }
+                
+                // Change the current directory to 'createdbyJenkinsPipeline' and pull Git content
                 dir('createdbyJenkinsPipeline') {
                     git url: 'https://github.com/nagvadraj/IntellipaatProjects.git', branch: 'develop'
                 }
