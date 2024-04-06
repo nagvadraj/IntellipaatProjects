@@ -1,0 +1,15 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('Pull Git Content') {
+            steps {
+                // Clean workspace
+                deleteDir()
+                
+                // Checkout code from Git
+                git credentialsId: 'your-git-credentials-id', url: 'https://github.com/your/repo.git', branch: 'develop'
+            }
+        }
+    }
+}
