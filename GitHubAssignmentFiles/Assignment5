@@ -1,0 +1,32 @@
+# Step 1: Initialize Git Flow
+git flow init -d
+
+# Step 2: Create all the required branches (master, develop, feature/feature_branch, hotfix/hotfix_branch)
+# No need to create branches manually, git-flow will create them on demand.
+
+# Step 3: Starting from the feature branch, push the branch to the master
+# Create a new feature branch
+git flow feature start my_feature
+
+# Work on your feature branch, make changes, stage, and commit them
+
+# When the feature is complete, merge it into the develop branch
+git flow feature finish my_feature
+
+# Merge develop into master
+git checkout master
+git merge develop
+
+# Step 4: Push a urgent.txt on master using hotfix
+# Create a hotfix branch
+git flow hotfix start urgent_fix
+
+# Make the necessary changes in the hotfix branch, stage, and commit them
+
+# Finish the hotfix, merging it into both master and develop
+git flow hotfix finish urgent_fix
+
+# Push branches and tags to the remote repository
+git push origin --all
+git push origin --tags
+

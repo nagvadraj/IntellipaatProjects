@@ -1,0 +1,16 @@
+# Step a: Create a new folder
+mkdir my_folder
+cd my_folder
+
+# Step b: Put the following files in the folder
+touch Code.txt Log.txt Output.txt
+
+# Step c: Stage the Code.txt and Output.txt files
+git add Code.txt Output.txt
+
+# Step d: Commit them
+git commit -m "Add Code.txt and Output.txt"
+
+# Step e: Push them to GitHub
+git push origin main
+
