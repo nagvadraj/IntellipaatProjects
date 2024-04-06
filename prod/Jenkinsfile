@@ -4,14 +4,7 @@ pipeline {
     stages {
         stage('Pull Git Content') {
             steps {
-                script {
-                    // Checkout the develop branch
-                    sh 'git checkout -f prod'
-                }
-                
-                {
-                    git url: 'https://github.com/nagvadraj/IntellipaatProjects.git', branch: 'prod'
-                }
+                git url: 'https://github.com/nagvadraj/IntellipaatProjects.git', branch: 'prod'
             }
         }
     }
