@@ -1,0 +1,3 @@
+kubectl apply -f Assignment5.yaml
+kubectl apply -f Assignment5Service.yaml
+kubectl apply -f ingress.yaml

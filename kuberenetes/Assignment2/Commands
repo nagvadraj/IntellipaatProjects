@@ -1,0 +1,4 @@
+kubectl apply -f Assignment1.yaml
+kubectl apply -f Assignment2Service.yaml
+kubectl get svc nginx-service
+kubectl port-forward service/nginx-service 8081:80
